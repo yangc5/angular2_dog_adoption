@@ -3,6 +3,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 import { DogService }     from './dog.service';
 import { DogsComponent } from './dogs.component';
 import { DashboardComponent } from './dashboard.component';
+import { DogDetailComponent } from './dog-detail.component';
 
 
 @Component({
@@ -30,7 +31,12 @@ import { DashboardComponent } from './dashboard.component';
     name: 'Dashboard',
     component: DashboardComponent,
     useAsDefault: true
-  }
+  },
+  {
+    path: '/detail/:id',
+    name: 'DogDetail',
+    component: DogDetailComponent
+  },
 ])
 export class AppComponent {
   title = 'Angular2 Dog Adoption';

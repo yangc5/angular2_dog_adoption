@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouteParams } from '@angular/router-deprecated';
+import {DogService} from './dog.service';
 import {Dog} from './dog';
 
 @Component({
@@ -15,7 +17,9 @@ import {Dog} from './dog';
   `
 
 })
-export class DogDetailComponent{
-    @Input()
-    dog: Dog;
+export class DogDetailComponent implements OnInit {
+  constructor(
+    private dogService: DogService,
+    private routeParams: RouteParams) {
+  }
 }
