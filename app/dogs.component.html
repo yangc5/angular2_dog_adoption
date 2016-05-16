@@ -1,0 +1,12 @@
+<h2>Dogs</h2>
+<ul class="dogs">
+  <li *ngFor="#dog of dogs" [class.selected]="dog === selectedDog" (click)="onSelect(dog)">
+    <span class="badge">{{dog.id}}</span> {{dog.name}}
+  </li>
+</ul>
+<div *ngIf="selectedDog">
+  <h2>
+    {{selectedDog.name | uppercase}} is a great dog available for adoption.
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

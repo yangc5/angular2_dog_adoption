@@ -5,21 +5,21 @@ import {Dog} from './dog';
 
 @Component({
   selector: 'my-dog-detail',
-  template: `
-    <div *ngIf="dog">
-      <h2>{{dog.name}} details!</h2>
-      <div><label>id: </label>{{dog.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="dog.name" placeholder="name">
-      </div>
-    </div>
-  `
-
+  templateUrl: 'app/dog-detail.component.html',
+  styleUrls: ['app/dog-detail.component.css'],
 })
 export class DogDetailComponent implements OnInit {
+  dog: Dog;
   constructor(
     private dogService: DogService,
     private routeParams: RouteParams) {
+  }
+  ngOnInit() {
+    let id = +this.routeParams.get('id');
+    this.dogService.getDog(id)
+      .then(dog => this.dog = dog);
+  }
+  goBack(){
+    window.history.back();
   }
 }
